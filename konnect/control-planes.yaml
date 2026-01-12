@@ -1,0 +1,5 @@
+control_planes:
+  - ref: code-breakers-cp
+    name: "code-breakers"
+    description: "Control plane for the Codebreakers example API."
+    cluster_type: "CLUSTER_TYPE_CONTROL_PLANE"

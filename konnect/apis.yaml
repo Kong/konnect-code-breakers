@@ -1,0 +1,39 @@
+apis:
+  - ref: codebreakers-api
+    name: !file ../openapi.yaml#info.title
+    description: !file ../openapi.yaml#info.description
+    version: !file ../openapi.yaml#info.version
+    labels:
+      category: games
+      protocol: rest
+
+    versions:
+      - ref: codebreakers-v1
+        version: !file ../openapi.yaml#info.version
+        spec: !file ../openapi.yaml
+
+    documents:
+      - ref: codebreakers-getting-started
+        title: "Codebreakers API: Getting Started"
+        slug: codebreakers-getting-started
+        status: published
+        content: !file apis/codebreakers/docs/getting-started.md
+
+      - ref: codebreakers-authentication
+        title: "Codebreakers API: Authentication"
+        slug: codebreakers-authentication
+        status: published
+        content: !file apis/codebreakers/docs/authentication.md
+
+      - ref: codebreakers-errors
+        title: "Codebreakers API: Error Handling"
+        slug: codebreakers-errors
+        status: published
+        content: !file apis/codebreakers/docs/errors.md
+
+    publications:
+      - ref: codebreakers-api-to-portal
+        portal_id: !ref code-breakers-portal#id
+        visibility: public
+        auth_strategy_ids:
+          - !ref key-auth#id
