@@ -249,7 +249,7 @@ Suggested codes:
 
 Repository should include:
 
-- `openapi.yaml` (use the provided skeleton file)
+- `api/openapi.yaml` (use the provided skeleton file)
 - `README.md` with:
   - local dev instructions (`AUTH_MODE=dev`, `X-Demo-User`)
   - Kong + IdP (Keycloak) instructions for OIDC + Consumer authorization

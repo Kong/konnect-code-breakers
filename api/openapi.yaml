@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Codebreakers API
+  title: code-breakers
   version: 0.1.0
   description: |
     Minimal Mastermind-style codebreaking game API intended for Kong examples.
