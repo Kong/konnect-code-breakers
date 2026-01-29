@@ -27,3 +27,10 @@ jobs:
           KONNECT_TOKEN: ${{ secrets.KONNECT_TOKEN }}
           KONNECT_REGION: ${{ secrets.KONNECT_REGION }}
         run: ./scripts/konnect-sync.sh
+
+      - name: Upload Konnect sync artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: konnect-sync
+          path: .konnect/
