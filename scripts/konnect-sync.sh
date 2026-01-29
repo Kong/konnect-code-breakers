@@ -29,6 +29,8 @@ deck file openapi2kong -s "$ROOT_DIR/api/openapi.yaml" > "$ROOT_DIR/.konnect/kon
 printf '==> Step 2: kongctl sync (Konnect resources + gateway config)\n'
 kongctl sync \
   --auto-approve \
+  --log-level debug \
+  --log-file "$ROOT_DIR/.konnect/kongctl.log" \
   --base-dir "$ROOT_DIR" \
   -f "${ROOT_DIR}/konnect/"
 #####################################################################
