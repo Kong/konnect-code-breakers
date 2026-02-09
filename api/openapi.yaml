@@ -171,6 +171,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Guess"
+        revealedCode:
+          type: string
+          pattern: "^[1-6]{4}$"
+          description: Present only when the game status is "lost".
         createdAt:
           type: string
           format: date-time

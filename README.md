@@ -41,6 +41,8 @@ Required sequence:
 - `.konnect/`: generated decK state file (gitignored, created by the script).
 - `scripts/konnect-sync.sh`: orchestration script for `kongctl` + `decK`.
 - `docs/`: implementation plan and background notes.
+- `backend/`: Fastify + TypeScript game service.
+- `frontend/`: React + Vite browser client for the game.
 
 ## Automation flow (local or CI)
 
@@ -79,3 +81,54 @@ Set these repository secrets for CI:
 
 - `KONNECT_TOKEN`
 - `KONNECT_REGION`
+
+## Local development
+
+This repository now includes both the backend service and a browser client.
+
+### Backend service (Fastify + TypeScript)
+
+```
+npm install
+npm run dev:backend
+```
+
+Environment variables:
+
+- `PORT`: service port (default: `8000`)
+- `HOST`: bind host (default: `0.0.0.0`)
+- `REQUIRE_AUTH`: set to `true` to require `X-Consumer-ID` (default: `false`)
+- `SERVE_STATIC`: set to `true` to serve the frontend build from the backend
+- `FRONTEND_DIST`: path to frontend build directory (default: `../frontend/dist`)
+
+### Frontend app (React + Vite)
+
+```
+npm install
+npm run dev:frontend
+```
+
+Environment variables:
+
+- `VITE_API_BASE_URL`: backend base URL (default: `http://localhost:8000`)
+
+### Run both together
+
+```
+npm install
+npm run dev
+```
+
+### Production-style build
+
+```
+npm install
+npm run build
+SERVE_STATIC=true npm run start
+```
+
+## Identity headers (future Kong Gateway integration)
+
+The backend looks for `X-Consumer-ID` to associate games with a player. When you add
+OIDC at the gateway later, configure Kong to forward the authenticated consumer ID
+using that header.
